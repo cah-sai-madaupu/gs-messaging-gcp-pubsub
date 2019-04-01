@@ -60,7 +60,7 @@ public class PubSubApplication {
     return message -> {
       LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
       AckReplyConsumer consumer =
-          (AckReplyConsumer) message.getHeaders().get(GcpPubSubHeaders.ACKNOWLEDGEMENT);
+          (AckReplyConsumer) message.getHeaders().get(GcpPubSubHeaders.ORIGINAL_MESSAGE);
       consumer.ack();
     };
   }
